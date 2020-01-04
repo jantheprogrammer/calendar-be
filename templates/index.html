@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calendar Summary</title>
+  </head>
+  <body>
+    <h2>Calendar Summary</h2>
+    {% for event in events %}
+    <h4>{{event.summary}}</h4>
+    <p>{{event.description}}</p>
+    {% endfor %}
+  </body>
+</html>
+
+<!-- babky, deda, domu, kata, hana, olles -->

@@ -1,24 +1,21 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
+from google_cal import events
 
 app = Flask(__name__)
 
 
 @app.route('/')
-def hello_world():
-    return 'Hello, World!'
+def index():
+    events_list = events.get_events()
+    return render_template('index.html', events=events_list)
 
 
-@app.route('/bok')
-def bok():
-    return 'bok'
-
-
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    if request.method == 'POST':
-        return 'posted'
-    else:
-        return 'get'
+# @app.route('/login', methods=['GET', 'POST'])
+# def login():
+#     if request.method == 'POST':
+#         return 'posted'
+#     else:
+#         return 'get'
 
 
 if __name__ == '__main__':
