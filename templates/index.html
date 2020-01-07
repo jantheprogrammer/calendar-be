@@ -3,15 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
     <title>Calendar Summary</title>
   </head>
   <body>
     <h2>Calendar Summary</h2>
     {% for event in events %}
-    <h4>{{event.summary}}</h4>
+    <h4>
+      {{event.summary}} 
+        {% if 'length' in event %} 
+        - {{event.length}} mins.
+        {% endif %}
+    </h4>
     <p>{{event.description}}</p>
+
     {% endfor %}
   </body>
 </html>
 
-<!-- babky, deda, domu, kata, hana, olles -->
+<!-- pohledy: babky, deda, domu, kata, hana, olles -->
