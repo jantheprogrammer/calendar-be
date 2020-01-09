@@ -1,21 +1,13 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, jsonify
 from google_cal import events
 
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route('/api', methods=['GET'])
 def index():
     events_list = events.get_events()
-    return render_template('index.html', events=events_list)
-
-
-# @app.route('/login', methods=['GET', 'POST'])
-# def login():
-#     if request.method == 'POST':
-#         return 'posted'
-#     else:
-#         return 'get'
+    return jsonify(events_list)
 
 
 if __name__ == '__main__':
