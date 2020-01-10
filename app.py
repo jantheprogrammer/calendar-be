@@ -1,7 +1,9 @@
 from flask import Flask, request, render_template, jsonify
 from google_cal import events
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 
 @app.route('/api', methods=['GET'])

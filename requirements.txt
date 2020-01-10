@@ -6,6 +6,7 @@ chardet==3.0.4
 Click==7.0
 colorama==0.4.3
 Flask==1.1.1
+Flask-Cors==3.0.8
 get==2019.4.13
 google-api-python-client==1.7.11
 google-auth==1.10.0
