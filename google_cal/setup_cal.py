@@ -28,6 +28,13 @@ def get_calendar():
         else:
             flow = InstalledAppFlow.from_client_secrets_file(
                 CREDENTIALS, SCOPES)
+            flow.authorization_url(
+                # Enable offline access so that you can refresh an access token without
+                # re-prompting the user for permission. Recommended for web server apps.
+                access_type='offline',
+                # Enable incremental authorization. Recommended as a best practice.
+                include_granted_scopes='true'
+            )
             creds = flow.run_local_server(port=0)
         # Save the credentials for the next run
         with open('token.pickle', 'wb') as token:
@@ -37,9 +44,3 @@ def get_calendar():
 
     return service
 
-    # events_result = service.events().list(calendarId='primary',
-    #                                       maxResults=3, singleEvents=True,
-    #                                       orderBy='startTime').execute()
-    # events = events_result.get('items', [])
-    #
-    # return events
