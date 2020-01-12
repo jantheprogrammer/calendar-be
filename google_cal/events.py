@@ -15,8 +15,8 @@ def calculate_length(start, end):
 def format_events(events):
     formated_events = []
 
-    for event in events:
-        formated_event = {'summary': event['summary'], 'description': event['description']}
+    for index, event in enumerate(events):
+        formated_event = {'summary': event['summary'], 'description': event['description'], 'id': index}
         try:
             start = event['start']['dateTime']
             end = event['end']['dateTime']
@@ -47,5 +47,3 @@ def get_events():
     formated_events = format_events(events)
 
     return formated_events
-
-# add id's
