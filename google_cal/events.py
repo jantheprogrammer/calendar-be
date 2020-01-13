@@ -14,9 +14,8 @@ def calculate_length(start, end):
 
 def format_events(events):
     formated_events = []
-
-    for index, event in enumerate(events):
-        formated_event = {'summary': event['summary'], 'description': event['description'], 'id': index}
+    for event in events:
+        formated_event = {'summary': event['summary'], 'description': event['description'], 'id': event['id']}
         try:
             start = event['start']['dateTime']
             end = event['end']['dateTime']
@@ -41,7 +40,7 @@ def get_events():
     # timeMin=now *in events().list
     # pylint: disable=no-member
     events_result = service.events().list(calendarId='primary', timeMin='2020-01-01T00:00:00.0Z',
-                                          maxResults=100, singleEvents=True,
+                                          maxResults=10, singleEvents=True,
                                           orderBy='startTime').execute()
     events = events_result.get('items', [])
     formated_events = format_events(events)
