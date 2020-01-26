@@ -33,16 +33,16 @@ def format_events(events):
         formated_events.append(formated_event)
     return formated_events
 
-def group_events(formated_events):
-    grouped_events = {'Reading': [], 'Work': [], 'School': [], 'Exercising': [], 'Other': []}
+# def group_events(formated_events):
+#     grouped_events = {'Reading': [], 'Work': [], 'School': [], 'Exercising': [], 'Other': []}
     
-    for event in formated_events: 
-        if event['summary'] in grouped_events:
-            grouped_events[event['summary']].append(event)
-        else:
-            grouped_events['Other'].append(event)
+#     for event in formated_events: 
+#         if event['summary'] in grouped_events:
+#             grouped_events[event['summary']].append(event)
+#         else:
+#             grouped_events['Other'].append(event)
 
-    return grouped_events 
+#     return grouped_events 
 
 
 def get_events(from_date, to_date):
@@ -58,6 +58,6 @@ def get_events(from_date, to_date):
 
     # format and group events to custom form
     formated_events = format_events(events)
-    grouped_events = group_events(formated_events)
+    # grouped_events = group_events(formated_events)
 
-    return grouped_events
+    return formated_events
