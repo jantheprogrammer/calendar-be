@@ -40,7 +40,7 @@ def group_events(formated_events):
         if event['summary'] in grouped_events:
             grouped_events[event['summary']].append(event)
         else:
-            grouped_events['Others'].append(event)
+            grouped_events['Other'].append(event)
 
     return grouped_events 
 
