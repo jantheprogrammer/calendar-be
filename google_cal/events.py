@@ -32,6 +32,17 @@ def format_events(events):
     return formated_events
     
 
+def group_events(formated_events):
+    grouped_events = {'Reading': [], 'Work': [], 'School': [], 'Exercising': [], 'Other': []}
+    
+    for event in formated_events: 
+        if event['summary'] in grouped_events:
+            grouped_events[event['summary']].append(event)
+        else:
+            grouped_events['Others'].append(event)
+
+    return grouped_events 
+
 
 def get_events():
     service = setup_cal.get_calendar()
@@ -40,9 +51,12 @@ def get_events():
     # timeMin=now *in events().list
     # pylint: disable=no-member
     events_result = service.events().list(calendarId='primary', timeMin='2020-01-01T00:00:00.0Z',
-                                          maxResults=10, singleEvents=True,
+                                          maxResults=100, singleEvents=True,
                                           orderBy='startTime').execute()
     events = events_result.get('items', [])
-    formated_events = format_events(events)
 
-    return formated_events
+    # format and group events to custom form
+    formated_events = format_events(events)
+    grouped_events = group_events(formated_events)
+
+    return grouped_events
