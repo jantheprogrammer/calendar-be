@@ -52,7 +52,7 @@ def get_events(from_date, to_date):
     # timeMin=now *in events().list
     # pylint: disable=no-member
     events_result = service.events().list(calendarId='primary', timeMin=from_date, timeMax=to_date,
-                                          maxResults=100, singleEvents=True,
+                                          maxResults=1000, singleEvents=True,
                                           orderBy='startTime').execute()
     events = events_result.get('items', [])
 
