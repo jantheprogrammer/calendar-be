@@ -14,9 +14,9 @@ def calculate_length(start, end):
 
 
 def format_events(events):
-    formated_events = []
+    formatted_events = []
     for event in events:
-        formated_event = {
+        formatted_event = {
             'summary': event['summary'], 'description': event['description'], 'id': event['id']}
         try:
             start = event['start']['dateTime']
@@ -24,25 +24,25 @@ def format_events(events):
             date = event['start']['dateTime'].split('T')[0][:10]
             length = calculate_length(start, end)
 
-            formated_event['date'] = date
-            formated_event['length'] = length
+            formatted_event['date'] = date
+            formatted_event['length'] = length
         except:
             date = event['start']['date']
-            formated_event['date'] = date
+            formatted_event['date'] = date
 
-        formated_events.append(formated_event)
-    return formated_events
+        formatted_events.append(formatted_event)
+    return formatted_events
 
-# def group_events(formated_events):
+# def group_events(formatted_events):
 #     grouped_events = {'Reading': [], 'Work': [], 'School': [], 'Exercising': [], 'Other': []}
-    
-#     for event in formated_events: 
+
+#     for event in formatted_events:
 #         if event['summary'] in grouped_events:
 #             grouped_events[event['summary']].append(event)
 #         else:
 #             grouped_events['Other'].append(event)
 
-#     return grouped_events 
+#     return grouped_events
 
 
 def get_events(from_date, to_date):
@@ -58,6 +58,6 @@ def get_events(from_date, to_date):
 
     # format and group events to custom form
     formated_events = format_events(events)
-    # grouped_events = group_events(formated_events)
+    # grouped_events = group_events(formatted_events)
 
     return formated_events
